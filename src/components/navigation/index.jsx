@@ -31,7 +31,7 @@ const Navigation = () => {
     <div
       className="fixed h-screen flex items-center justify-center"
       style={{
-        left: isLarge ? "65%" : isMedium ? "62%" : "58%",
+        left: isLarge ? "70%" : isMedium ? "67%" : "58%",
         top: 0,
         transform: "translateX(-50%)",
         width: "auto",
