@@ -10,7 +10,9 @@ const container = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
-    transition: { staggerChildren: 0.08, delayChildren: 0.4 },
+    transition: {
+      staggerChildren: 0.3,
+    },
   },
 };
 
@@ -21,11 +23,20 @@ const Navigation = () => {
   const isMedium = size >= 768;
 
   return (
-    /*
-      Ring stays centred on screen. The hero text sits bottom-left
-      and is absolutely positioned so it never pushes the ring.
-    */
-    <div className="w-full fixed h-screen flex items-center justify-center lg:justify-end lg:pr-[14vw]">
+    /* Shift the whole orbit to the right:
+       - large screens  → left: 65%
+       - medium screens → left: 62%
+       - small (orbit)  → left: 58%
+       translateX(-50%) keeps it centred on that anchor point */
+    <div
+      className="fixed h-screen flex items-center justify-center"
+      style={{
+        left: isLarge ? "65%" : isMedium ? "62%" : "58%",
+        top: 0,
+        transform: "translateX(-50%)",
+        width: "auto",
+      }}
+    >
       <ResponsiveComponent>
         {({ size }) => {
           return size && size >= 480 ? (
@@ -38,36 +49,26 @@ const Navigation = () => {
               {BtnList.map((btn, index) => {
                 const angleRad = (index * angleIncrement * Math.PI) / 180;
                 const radius = isLarge
-                  ? "calc(18vw - 1rem)"
+                  ? "calc(20vw - 1rem)"
                   : isMedium
-                  ? "calc(26vw - 1rem)"
-                  : "calc(36vw - 1rem)";
+                  ? "calc(28vw - 1rem)"
+                  : "calc(38vw - 1rem)";
                 const x = `calc(${radius}*${Math.cos(angleRad)})`;
                 const y = `calc(${radius}*${Math.sin(angleRad)})`;
+
                 return <NavButton key={btn.label} x={x} y={y} {...btn} />;
               })}
             </motion.div>
           ) : (
-            /* Mobile — two-column list */
-            <>
+            /* Mobile: two columns on far right */
+            <div className="fixed right-3 top-1/2 -translate-y-1/2 flex flex-col gap-3 z-50">
               <motion.div
                 variants={container}
                 initial="hidden"
                 animate="show"
-                className="w-full px-2.5 xs:p-0 xs:w-max flex flex-col space-y-4 items-start justify-center relative group xs:hidden"
+                className="flex flex-col gap-3"
               >
-                {BtnList.slice(0, Math.ceil(BtnList.length / 2)).map((btn) => (
-                  <NavButton key={btn.label} x={0} y={0} {...btn} />
-                ))}
-              </motion.div>
-
-              <motion.div
-                variants={container}
-                initial="hidden"
-                animate="show"
-                className="w-full px-2.5 xs:p-0 xs:w-max flex flex-col space-y-4 items-end justify-center relative group xs:hidden"
-              >
-                {BtnList.slice(Math.ceil(BtnList.length / 2)).map((btn) => (
+                {BtnList.map((btn) => (
                   <NavButton
                     key={btn.label}
                     x={0}
@@ -77,7 +78,7 @@ const Navigation = () => {
                   />
                 ))}
               </motion.div>
-            </>
+            </div>
           );
         }}
       </ResponsiveComponent>

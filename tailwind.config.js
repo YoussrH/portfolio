@@ -10,8 +10,8 @@ module.exports = {
       fontFamily:{
         inter: ['var(--font-inter)'],
         lamoric: ['LamoricRowen', 'sans-serif'],
-        display: ['Cormorant Garamond', 'Georgia', 'serif'],
-        body: ['Inter', 'sans-serif'],
+        cormorant: ['var(--font-cormorant)', 'Georgia', 'serif'],
+        dm: ['var(--font-dm)', 'sans-serif'],
       },
       colors:{
         background: 'rgb(var(--background))',

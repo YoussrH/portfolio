@@ -5,41 +5,48 @@ import Navigation from "@/components/navigation";
 import Avatar from "@/components/models/Avatar";
 import "./fonts.css";
 
-/* ── animation variants ─────────────────────────────────── */
-const fadeUp = {
+/* ─── animation variants ────────────────────────────────── */
+
+const slideUp = (delay = 0) => ({
   hidden: { opacity: 0, y: 40 },
-  visible: (i) => ({
+  visible: {
     opacity: 1,
     y: 0,
-    transition: {
-      delay: i * 0.18,
-      duration: 0.9,
-      ease: [0.22, 1, 0.36, 1],
-    },
-  }),
-};
+    transition: { delay, duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+  },
+});
+
+const slideIn = (delay = 0) => ({
+  hidden: { opacity: 0, x: -30 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { delay, duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+  },
+});
 
 const lineReveal = {
   hidden: { scaleX: 0, opacity: 0 },
   visible: {
     scaleX: 1,
     opacity: 1,
-    transition: { delay: 0.75, duration: 1, ease: [0.22, 1, 0.36, 1] },
+    transition: { delay: 0.9, duration: 1, ease: [0.22, 1, 0.36, 1] },
   },
 };
 
-const badgePop = {
-  hidden: { opacity: 0, scale: 0.75, y: 10 },
-  visible: (i) => ({
+const badgeContainer = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.1, delayChildren: 1.3 } },
+};
+
+const badgeItem = {
+  hidden: { opacity: 0, y: 12, scale: 0.9 },
+  visible: {
     opacity: 1,
-    scale: 1,
     y: 0,
-    transition: {
-      delay: 1.1 + i * 0.1,
-      duration: 0.45,
-      ease: [0.34, 1.56, 0.64, 1],
-    },
-  }),
+    scale: 1,
+    transition: { duration: 0.4, ease: "backOut" },
+  },
 };
 
 const badges = [
@@ -49,59 +56,66 @@ const badges = [
   "Computer Vision",
 ];
 
+/* ─── component ─────────────────────────────────────────── */
+
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between relative overflow-hidden">
 
-      {/* ── Radial spotlight ── */}
+      {/* Radial spotlight */}
       <div
         className="pointer-events-none fixed inset-0 z-0"
         style={{
           background:
-            "radial-gradient(ellipse 55% 50% at 65% 55%, rgba(254,254,91,0.07) 0%, transparent 70%)",
+            "radial-gradient(ellipse 55% 50% at 60% 55%, rgba(254,254,91,0.07) 0%, transparent 70%)",
         }}
       />
 
-      {/* ── Subtle dot-grid ── */}
+      {/* Subtle dot-grid */}
       <div
-        className="pointer-events-none fixed inset-0 z-0 opacity-[0.025]"
+        className="pointer-events-none fixed inset-0 z-0"
         style={{
           backgroundImage:
-            "radial-gradient(circle, rgba(254,254,91,0.9) 1px, transparent 1px)",
-          backgroundSize: "40px 40px",
+            "radial-gradient(circle, rgba(254,254,91,0.08) 1px, transparent 1px)",
+          backgroundSize: "48px 48px",
+          opacity: 0.35,
         }}
       />
 
       <div className="w-full h-screen relative">
 
-        {/* ── Hero text — bottom-left ── */}
-        <div className="absolute bottom-10 left-6 xs:left-12 lg:left-20 z-20 max-w-md pointer-events-none">
+        {/* ── Hero text block — left side ── */}
+        <div className="absolute bottom-12 left-6 xs:left-10 lg:left-14 z-20 max-w-md lg:max-w-lg">
 
-          {/* Eyebrow */}
+          {/* Eyebrow label */}
           <motion.p
-            custom={0}
-            variants={fadeUp}
+            variants={slideIn(0.2)}
             initial="hidden"
             animate="visible"
-            className="font-body text-xs tracking-[0.3em] uppercase text-accent/70 mb-4 font-medium"
+            className="font-dm text-[11px] xs:text-xs tracking-[0.3em] uppercase text-foreground/40 mb-4 flex items-center gap-2"
           >
-            Portfolio · AI &amp; IoT
+            <span className="inline-block w-5 h-px bg-accent/60" />
+            Portfolio
           </motion.p>
 
-          {/* Name */}
+          {/* Name — Cormorant Garamond for elegance */}
           <motion.h1
-            custom={1}
-            variants={fadeUp}
+            variants={slideUp(0.35)}
             initial="hidden"
             animate="visible"
-            className="font-display leading-[1.05] gradient-text"
-            style={{ fontSize: "clamp(2.8rem, 7vw, 6.5rem)", fontWeight: 600 }}
+            className="font-cormorant font-semibold leading-[1.05] text-5xl xs:text-6xl lg:text-8xl"
+            style={{
+              background:
+                "linear-gradient(135deg, #FEFE5B 0%, #DEAA44 45%, #FFD861 80%, #FEFE5B 100%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+              filter: "drop-shadow(0 0 24px rgba(254,254,91,0.25))",
+            }}
           >
             Yosr
             <br />
-            <span style={{ fontStyle: "italic", fontWeight: 300 }}>
-              El Hamdouni
-            </span>
+            <span className="font-light italic">El Hamdouni</span>
           </motion.h1>
 
           {/* Animated accent line */}
@@ -116,40 +130,33 @@ export default function Home() {
             }}
           />
 
-          {/* Subtitle */}
+          {/* Title */}
           <motion.p
-            custom={2}
-            variants={fadeUp}
+            variants={slideUp(0.65)}
             initial="hidden"
             animate="visible"
-            className="font-body font-light text-foreground/55 text-sm xs:text-base tracking-[0.2em] uppercase"
+            className="font-dm font-light text-foreground/60 text-sm xs:text-base tracking-[0.2em] uppercase"
           >
-            Master&apos;s Student · Tunis, Tunisia
+            AI &amp; IoT Master&apos;s Student
           </motion.p>
 
-          {/* Skill badges */}
+          {/* Badges */}
           <motion.div
+            variants={badgeContainer}
             initial="hidden"
             animate="visible"
-            className="flex flex-wrap gap-2 mt-6 pointer-events-auto"
+            className="flex flex-wrap gap-2 mt-5"
           >
-            {badges.map((b, i) => (
-              <motion.span
-                key={b}
-                custom={i}
-                variants={badgePop}
-                className="skill-tag font-body text-[11px] tracking-wide"
-              >
+            {badges.map((b) => (
+              <motion.span key={b} variants={badgeItem} className="skill-tag font-dm">
                 {b}
               </motion.span>
             ))}
           </motion.div>
         </div>
 
-        {/* ── Navigation ring — pushed right ── */}
+        {/* 3D Avatar */}
         <Navigation />
-
-        {/* ── 3D Avatar ── */}
         <RenderModel>
           <Avatar />
         </RenderModel>

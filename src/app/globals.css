@@ -61,16 +61,6 @@
     background-clip: text;
   }
 
-  /* Display / serif headings */
-  .font-display {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-  }
-
-  /* Body / sans */
-  .font-body {
-    font-family: 'Inter', sans-serif;
-  }
-
   /* Card hover lift */
   .card-hover {
     @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-glass-sm;
@@ -249,5 +239,5 @@
 
 .skill-tag {
   @apply px-3 py-1 rounded-full text-xs border border-accent/30 bg-accent/5 text-foreground/80
-         transition-all duration-200 hover:border-accent/70 hover:text-accent hover:bg-accent/10;
+         transition-all duration-200 hover:border-accent/70 hover:text-accent hover:bg-accent/10 font-dm;
 }
