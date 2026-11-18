@@ -24,7 +24,7 @@ const HomeBtn = () => {
       <span className="relative w-12 h-12 xs:w-14 xs:h-14 p-3 xs:p-4 hover:text-accent transition-colors duration-200">
         <Home className="w-full h-auto" strokeWidth={1.5} />
         <span className="peer bg-transparent absolute top-0 left-0 w-full h-full" />
-        <span className="absolute hidden peer-hover:block px-2 py-1 left-full mx-2 top-1/2 -translate-y-1/2 bg-background border border-accent/20 text-foreground text-xs rounded-lg shadow-glass-sm whitespace-nowrap z-50">
+        <span className="absolute hidden peer-hover:block px-2 py-1 left-full mx-2 top-1/2 -translate-y-1/2 bg-background border border-accent/20 font-dm text-foreground text-xs rounded-lg shadow-glass-sm whitespace-nowrap z-50">
           Home
         </span>
       </span>
