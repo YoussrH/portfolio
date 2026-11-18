@@ -12,17 +12,11 @@ export default function Avatar(props) {
 
   useFrame((state, delta) => {
     const t = state.clock.elapsedTime;
-
-    // Floating bob
+    // Floating bob only — no rotation
     modelRef.current.position.y = -1.5 + Math.sin(t) * 0.12;
-
-    // Slow Y rotation
-    modelRef.current.rotation.y += delta * 0.4;
-
-
   });
   return (
-    <group {...props} ref={modelRef} dispose={null} position={[0,-1.6,0]} rotation={[0.25,0,0]} scale={[2,2,2]} >
+    <group {...props} ref={modelRef} dispose={null} position={[1.2,-1.6,0]} rotation={[0.1,0,0]} scale={[2,2,2]} >
       <primitive object={nodes.Hips} />
       <skinnedMesh
         name="EyeLeft"

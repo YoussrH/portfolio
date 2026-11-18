@@ -22,12 +22,10 @@ const Navigation = () => {
 
   return (
     /*
-      On desktop (≥480px) the ring is centred at 68% from the left
-      so it sits in the right half of the screen, well clear of the
-      bottom-left hero text.
-      On mobile it stays full-width with two columns.
+      Ring stays centred on screen. The hero text sits bottom-left
+      and is absolutely positioned so it never pushes the ring.
     */
-    <div className="w-full fixed h-screen flex items-center justify-center xs:justify-end xs:pr-[8vw] lg:pr-[12vw]">
+    <div className="w-full fixed h-screen flex items-center justify-center">
       <ResponsiveComponent>
         {({ size }) => {
           return size && size >= 480 ? (
