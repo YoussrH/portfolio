@@ -20,7 +20,7 @@ const item = {
 };
 
 const inputClasses =
-  "w-full px-4 py-3 rounded-xl text-foreground text-sm placeholder:text-foreground/30 focus:outline-none focus:ring-2 focus:ring-accent/50 custom-bg transition-all duration-200 hover:border-accent/50";
+  "w-full px-4 py-3 rounded-xl font-dm text-foreground text-sm placeholder:text-foreground/30 focus:outline-none focus:ring-2 focus:ring-accent/50 custom-bg transition-all duration-200 hover:border-accent/50";
 
 export default function Form() {
   const {
@@ -125,7 +125,7 @@ export default function Form() {
           disabled={isSubmitting}
           whileHover={{ scale: 1.02, boxShadow: "0 0 20px rgba(254,254,91,0.3)" }}
           whileTap={{ scale: 0.98 }}
-          className="w-full px-6 py-3.5 rounded-xl font-lamoric text-sm font-semibold uppercase tracking-widest
+          className="w-full px-6 py-3.5 rounded-xl font-dm text-sm font-semibold uppercase tracking-widest
             border border-accent/40 bg-accent/5 text-foreground
             hover:bg-accent/10 hover:border-accent/70 hover:text-accent
             disabled:opacity-50 disabled:cursor-not-allowed

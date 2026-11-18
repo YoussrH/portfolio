@@ -1,49 +1,91 @@
-/*
-Websites:
-
-- https://github.com/pmndrs/gltfjsx (GLTF JSX for 3D Models)
-- https://lucide.dev/icons/ (Lucide Icons)
-- https://github.com/anuraghazra/github-readme-stats (Github Readme Stats)
-- https://skillicons.dev (Skill Icons to show skills)
-- https://github-readme-streak-stats.herokuapp.com (Github Readme Streak Stats)
-
-:root {
-  --background: 27 27 27;
-  --foreground: 225 225 225;
-  --muted: 115 115 115;
-  --accent: 254 254 91; #FEFE5B
-}
-
-*/
-
 export const projectsData = [
   {
     id: 1,
-    name: "AI-Powered E-commerce Platform & Courier App",
-    description: "ML-driven product recommendations and price estimation",
-    date: "2025-05-01",
+    name: "Surveillance Agricole Intelligente",
+    description: "Smart farming IoT monitoring application with technology-assisted agriculture",
+    date: "2024-06-01",
     demoLink: "https://github.com/YoussrH",
+    tags: ["Java", "IoT", "XML", "Arduino"],
   },
   {
     id: 2,
+    name: "Nutrition Mobile App & Website",
+    description: "Cross-platform nutrition tracking app with mobile and web interfaces",
+    date: "2024-03-01",
+    demoLink: "https://github.com/YoussrH",
+    tags: ["Java", "XML", "SQLite", "Symfony", "PHP"],
+  },
+  {
+    id: 3,
+    name: "Courier Mobile App",
+    description: "Mobile courier operations app with REST API backend and database",
+    date: "2025-05-01",
+    demoLink: "https://github.com/YoussrH",
+    tags: ["React Native", "Node.js", "Express", "PostgreSQL"],
+  },
+  {
+    id: 4,
+    name: "E-commerce Website — MGM Store",
+    description: "Full-stack e-commerce platform with ML-powered product recommendations",
+    date: "2025-05-01",
+    demoLink: "https://github.com/YoussrH",
+    tags: ["Next.js", "Node.js", "Express", "PostgreSQL"],
+  },
+  {
+    id: 5,
+    name: "E-commerce Website — Book Store",
+    description: "Online bookstore with catalogue, cart, and order management",
+    date: "2024-05-01",
+    demoLink: "https://github.com/YoussrH",
+    tags: ["Symfony", "PHP"],
+  },
+  {
+    id: 6,
+    name: "Carpooling Application",
+    description: "Full-stack carpooling platform with real-time matching",
+    date: "2024-01-01",
+    demoLink: "https://github.com/YoussrH",
+    tags: ["Spring Boot", "React.js", "Vite"],
+  },
+  {
+    id: 7,
+    name: "Portfolio Website",
+    description: "Personal portfolio with 3D models, animations and interactive UI",
+    date: "2024-09-01",
+    demoLink: "https://github.com/YoussrH",
+    tags: ["React.js", "Next.js", "Three.js", "Framer Motion"],
+  },
+  {
+    id: 8,
+    name: "ACS Showcase Website",
+    description: "Company showcase website for Accounting Computer Service",
+    date: "2024-02-01",
+    demoLink: "https://github.com/YoussrH",
+    tags: ["React.js", "Node.js", "Express", "MongoDB"],
+  },
+  {
+    id: 9,
+    name: "Clothing Store",
+    description: "Full-stack clothing e-commerce with Angular frontend",
+    date: "2023-12-01",
+    demoLink: "https://github.com/YoussrH",
+    tags: ["Angular", "Node.js"],
+  },
+  {
+    id: 10,
     name: "AI & Computer Vision Applications",
     description: "Real-time computer vision and image-based detection on Raspberry Pi",
     date: "2024-12-01",
     demoLink: "https://github.com/YoussrH",
+    tags: ["Python", "OpenCV", "Raspberry Pi"],
   },
   {
-    id: 3,
-    name: "Desktop Business Management Application",
+    id: 11,
+    name: "Desktop Business Management App",
     description: "Cross-platform Electron app to automate and manage business operations",
     date: "2026-04-01",
     demoLink: "https://github.com/YoussrH",
-  },
-  {
-    id: 4,
-    name: "Smart Farming Application",
-    description: "Intelligent agriculture monitoring with IoT-assisted farming",
-    date: "2024-06-01",
-    demoLink: "https://github.com/YoussrH",
+    tags: ["Electron", "Node.js", "Express"],
   },
 ];
 
@@ -77,5 +119,3 @@ export const BtnList = [
     newTab: true,
   },
 ];
-
-

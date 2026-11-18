@@ -14,7 +14,7 @@ export default function Avatar(props) {
     const t = state.clock.elapsedTime;
 
     // Floating bob
-    modelRef.current.position.y = -1.9 + Math.sin(t) * 0.12;
+    modelRef.current.position.y = -2 + Math.sin(t) * 0.12;
 
     // Slow Y rotation
     modelRef.current.rotation.y += delta * 0.4;
@@ -22,7 +22,7 @@ export default function Avatar(props) {
 
   });
   return (
-    <group {...props} ref={modelRef} dispose={null} position={[2.5,0,0]} rotation={[0.15,0,0]} scale={[2,2,2]} >
+    <group {...props} ref={modelRef} dispose={null} position={[3.5,0,0]} rotation={[0,0,0]} scale={[2,2,2]} >
       <primitive object={nodes.Hips} />
       <skinnedMesh
         name="EyeLeft"

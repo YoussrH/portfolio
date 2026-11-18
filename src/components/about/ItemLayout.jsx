@@ -11,7 +11,6 @@ const ItemLayout = ({ children, className }) => {
       viewport={{ once: true }}
       whileHover={{ y: -2, transition: { duration: 0.2 } }}
       className={clsx(
-        "font-lamoric",
         "custom-bg hover-glow p-6 sm:p-8 rounded-xl flex items-center justify-center space-y-8",
         className
       )}
