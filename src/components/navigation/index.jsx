@@ -25,7 +25,7 @@ const Navigation = () => {
       Ring stays centred on screen. The hero text sits bottom-left
       and is absolutely positioned so it never pushes the ring.
     */
-    <div className="w-full fixed h-screen flex items-center justify-center">
+    <div className="w-full fixed h-screen flex items-center justify-center lg:justify-end lg:pr-[14vw]">
       <ResponsiveComponent>
         {({ size }) => {
           return size && size >= 480 ? (

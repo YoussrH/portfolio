@@ -16,7 +16,7 @@ export default function Avatar(props) {
     modelRef.current.position.y = -1.5 + Math.sin(t) * 0.12;
   });
   return (
-    <group {...props} ref={modelRef} dispose={null} position={[1.2,-1.6,0]} rotation={[0.1,0,0]} scale={[2,2,2]} >
+    <group {...props} ref={modelRef} dispose={null} position={[2.8,-1.6,0]} rotation={[0.1,0,0]} scale={[2,2,2]} >
       <primitive object={nodes.Hips} />
       <skinnedMesh
         name="EyeLeft"
