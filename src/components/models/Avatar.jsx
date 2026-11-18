@@ -22,7 +22,7 @@ export default function Avatar(props) {
 
   });
   return (
-    <group {...props} ref={modelRef} dispose={null} position={[0,-1.6,0]} rotation={[0.25,0,0]} scale={[2,2,2]} >
+    <group {...props} ref={modelRef} dispose={null} position={[1.2,-1.6,0]} rotation={[0.25,0,0]} scale={[2,2,2]} >
       <primitive object={nodes.Hips} />
       <skinnedMesh
         name="EyeLeft"
