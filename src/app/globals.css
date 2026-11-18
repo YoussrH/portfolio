@@ -61,6 +61,16 @@
     background-clip: text;
   }
 
+  /* Display / serif headings */
+  .font-display {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+  }
+
+  /* Body / sans */
+  .font-body {
+    font-family: 'Inter', sans-serif;
+  }
+
   /* Card hover lift */
   .card-hover {
     @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-glass-sm;

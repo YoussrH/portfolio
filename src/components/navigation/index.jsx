@@ -10,9 +10,7 @@ const container = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
-    transition: {
-      staggerChildren: 0.3,
-    },
+    transition: { staggerChildren: 0.08, delayChildren: 0.4 },
   },
 };
 
@@ -23,7 +21,13 @@ const Navigation = () => {
   const isMedium = size >= 768;
 
   return (
-    <div className="w-full fixed h-screen flex items-center justify-center ">
+    /*
+      On desktop (≥480px) the ring is centred at 68% from the left
+      so it sits in the right half of the screen, well clear of the
+      bottom-left hero text.
+      On mobile it stays full-width with two columns.
+    */
+    <div className="w-full fixed h-screen flex items-center justify-center xs:justify-end xs:pr-[8vw] lg:pr-[12vw]">
       <ResponsiveComponent>
         {({ size }) => {
           return size && size >= 480 ? (
@@ -36,48 +40,44 @@ const Navigation = () => {
               {BtnList.map((btn, index) => {
                 const angleRad = (index * angleIncrement * Math.PI) / 180;
                 const radius = isLarge
-                  ? "calc(20vw - 1rem)"
+                  ? "calc(18vw - 1rem)"
                   : isMedium
-                  ? "calc(30vw - 1rem)"
-                  : "calc(40vw - 1rem)";
+                  ? "calc(26vw - 1rem)"
+                  : "calc(36vw - 1rem)";
                 const x = `calc(${radius}*${Math.cos(angleRad)})`;
                 const y = `calc(${radius}*${Math.sin(angleRad)})`;
-
                 return <NavButton key={btn.label} x={x} y={y} {...btn} />;
               })}
             </motion.div>
           ) : (
+            /* Mobile — two-column list */
             <>
               <motion.div
                 variants={container}
                 initial="hidden"
                 animate="show"
-                className="w-full px-2.5 xs:p-0 xs:w-max flex flex-col space-y-4 item-start xs:items-center justify-center relative  group xs:hidden"
+                className="w-full px-2.5 xs:p-0 xs:w-max flex flex-col space-y-4 items-start justify-center relative group xs:hidden"
               >
-                {BtnList.slice(0, BtnList.length / 2).map((btn) => {
-                  return <NavButton key={btn.label} x={0} y={0} {...btn} />;
-                })}
+                {BtnList.slice(0, Math.ceil(BtnList.length / 2)).map((btn) => (
+                  <NavButton key={btn.label} x={0} y={0} {...btn} />
+                ))}
               </motion.div>
 
               <motion.div
                 variants={container}
                 initial="hidden"
                 animate="show"
-                className="w-full px-2.5 xs:p-0 xs:w-max flex flex-col space-y-4 items-end xs:items-center justify-center relative group xs:hidden"
+                className="w-full px-2.5 xs:p-0 xs:w-max flex flex-col space-y-4 items-end justify-center relative group xs:hidden"
               >
-                {BtnList.slice(BtnList.length / 2, BtnList.length).map(
-                  (btn) => {
-                    return (
-                      <NavButton
-                        key={btn.label}
-                        x={0}
-                        y={0}
-                        {...btn}
-                        labelDirection="left"
-                      />
-                    );
-                  }
-                )}
+                {BtnList.slice(Math.ceil(BtnList.length / 2)).map((btn) => (
+                  <NavButton
+                    key={btn.label}
+                    x={0}
+                    y={0}
+                    {...btn}
+                    labelDirection="left"
+                  />
+                ))}
               </motion.div>
             </>
           );
